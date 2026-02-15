@@ -1,5 +1,6 @@
+name: letters
 services:
-  letters:
+  app:
     image: node:22-alpine
     working_dir: /app
     environment:
