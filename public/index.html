@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>letters from rushil</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #faf8f3;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      input {
+        margin: 20px;
+        padding: 10px;
+        font-size: 2rem;
+        text-transform: uppercase;
+        max-width: 10ch;
+        text-align: center;
+      }
+
+      button {
+        padding: 5px 10px;
+        font-size: 1.2rem;
+      }
+
+      .error {
+        color: #d32f2f;
+        font-size: 0.9rem;
+        margin-top: 10px;
+        min-height: 20px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>letters from rushil...</h3>
+      <pre>maybe for you!</pre>
+      <input
+        type="text"
+        id="code"
+        name="code"
+        autocapitalize="characters"
+        autocomplete="off"
+        placeholder="code"
+        maxlength="4"
+      />
+      <button id="submit">submit</button>
+      <div class="error" id="error"></div>
+    </div>
+
+    <script>
+      const code = document.getElementById("code");
+      const submit = document.getElementById("submit");
+      const error = document.getElementById("error");
+
+      async function checkCode(code) {
+        submit.disabled = true;
+        error.textContent = "";
+
+        try {
+          const response = await fetch("/api/verify-code", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ code }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            if (data.valid) {
+              window.location.href = data.redirect;
+            } else {
+              error.textContent = "invalid code, try again!";
+              submit.disabled = false;
+            }
+          } else {
+            error.textContent = "error connecting to server";
+            submit.disabled = false;
+          }
+        } catch (err) {
+          error.textContent = "error connecting to server";
+          submit.disabled = false;
+          console.error(err);
+        }
+      }
+
+      submit.addEventListener("click", () => {
+        const codeValue = code.value.trim().toUpperCase();
+        if (codeValue.length === 4) {
+          checkCode(codeValue);
+        } else {
+          error.textContent = "code must be 4 characters";
+        }
+      });
+
+      code.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          submit.click();
+        }
+      });
+
+      code.focus();
+    </script>
+  </body>
+</html>

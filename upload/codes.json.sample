@@ -1,0 +1,7 @@
+{
+  "codes": {
+    "AB12": "mike",
+    "CD34": "sarah",
+    "EF56": "emma" // add new code here
+  }
+}

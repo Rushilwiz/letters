@@ -1,0 +1,13 @@
+services:
+  letters:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - upload:/app/upload
+    ports:
+      - "3000:3000"
+    entrypoint: ["yarn", "run", "start"]
+
+volumes:
+  upload:

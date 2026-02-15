@@ -1,0 +1,19 @@
+{
+  "name": "letters",
+  "version": "1.0.0",
+  "description": "letters from you!",
+  "main": "server.js",
+  "repository": "https://github.com/rushilwiz/letters",
+  "author": "rushil@rushil.land",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
