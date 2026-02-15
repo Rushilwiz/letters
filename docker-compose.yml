@@ -7,10 +7,7 @@ services:
       - NODE_ENV=production
     volumes:
       - .:/app
-      - upload:/app/upload
+      - ./upload:/app/upload
     ports:
       - "3000:3000"
     entrypoint: ["/app/entrypoint.sh"]
-
-volumes:
-  upload:
