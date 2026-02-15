@@ -186,7 +186,7 @@ const generateDirectoryHtml = (slug, subpath, items, isRootLevel) => {
         }
         .file-icon {
           font-size: 1.5rem;
-          font-family "Noto Color Emoji", sans-serif;
+          font-family: "Noto Color Emoji", sans-serif;
           font-weight: 400;
           font-style: normal;
         }
