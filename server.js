@@ -137,13 +137,15 @@ const generateDirectoryHtml = (slug, subpath, items, isRootLevel) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>${heading}</title>
       <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');        
+        
         * {
           padding: 0;
           margin: 0;
           box-sizing: border-box;
         }
         body {
-          font-family: 'Courier New', monospace;
+          font-family: 'Roboto Mono', monospace;
           background: #faf8f3;
           color: #333;
           padding: 40px 20px;
@@ -184,6 +186,9 @@ const generateDirectoryHtml = (slug, subpath, items, isRootLevel) => {
         }
         .file-icon {
           font-size: 1.5rem;
+          font-family "Noto Color Emoji", sans-serif;
+          font-weight: 400;
+          font-style: normal;
         }
         .back-link {
           display: inline-block;
