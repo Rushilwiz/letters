@@ -2,6 +2,8 @@ services:
   letters:
     image: node:22-alpine
     working_dir: /app
+    environment:
+      - NODE_ENV=production
     volumes:
       - .:/app
       - upload:/app/upload
