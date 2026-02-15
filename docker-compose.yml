@@ -10,7 +10,7 @@ services:
       - upload:/app/upload
     ports:
       - "3000:3000"
-    entrypoint: ["yarn", "run", "start"]
+    entrypoint: ["/app/entrypoint.sh"]
 
 volumes:
   upload:
